@@ -1,0 +1,14 @@
+node_modules/
+dist/
+build/
+.env
+!.env.example
+*.log
+.DS_Store
+.vscode/
+.idea/
+PORT=4000
+DATABASE_URL=postgresql://postgres:postgres@localhost:5432/borrowbox
+JWT_SECRET=dev_secret_change_me_in_production_xk29fj
+JWT_EXPIRES_IN=7d
+NODE_ENV=development

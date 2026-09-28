@@ -1,0 +1,25 @@
+{
+  "name": "borrowbox-backend",
+  "version": "1.0.0",
+  "description": "BorrowBox REST API - peer-to-peer item lending platform",
+  "main": "src/server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "db:setup": "node scripts/db_setup.mjs all",
+    "db:schema": "node scripts/db_setup.mjs schema",
+    "db:seed": "node scripts/db_setup.mjs seed",
+    "test": "node scripts/smoke_test.mjs"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-validator": "^7.2.0",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "pg": "^8.13.1"
+  }
+}

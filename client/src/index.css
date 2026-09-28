@@ -1,0 +1,206 @@
+:root {
+  /* Brand palette */
+  --navy: #012894;
+  --blue: #1E8FD5;
+  --teal: #0E9F9A;
+  --indigo: #5B4BC4;
+
+  /* Neutrals */
+  --paper: #F7F8FA;
+  --surface: #FFFFFF;
+  --ink: #101425;
+  --ink-soft: #4A5063;
+  --muted: #7B8195;
+  --border: #E2E6ED;
+  --border-strong: #C7CDDB;
+
+  /* Status semantics (used consistently everywhere: badges, dashboard, admin) */
+  --status-requested: #C77A1F;
+  --status-requested-bg: #FBF0DF;
+  --status-approved: var(--blue);
+  --status-approved-bg: #E4F1FB;
+  --status-picked-up: var(--indigo);
+  --status-picked-up-bg: #ECE9F9;
+  --status-returned: var(--teal);
+  --status-returned-bg: #E1F5F3;
+  --status-rejected: #C7404A;
+  --status-rejected-bg: #FBE7E8;
+  --status-cancelled: #6B7080;
+  --status-cancelled-bg: #EBECEF;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --shadow-card: 0 1px 2px rgba(16, 20, 37, 0.06);
+
+  --font-display: 'Times New Roman', Times, serif;
+  --font-body: 'Times New Roman', Times, serif;
+  --font-mono: 'Times New Roman', Times, serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0 0 0.5em;
+  letter-spacing: -0.01em;
+}
+
+p { line-height: 1.55; color: var(--ink-soft); }
+
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+button, input, select, textarea { font-family: inherit; font-size: inherit; }
+
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.narrow {
+  max-width: 460px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.btn-primary { background: var(--navy); color: white; }
+.btn-primary:hover:not(:disabled) { background: #011d70; text-decoration: none; }
+
+.btn-secondary { background: var(--surface); color: var(--navy); border-color: var(--border-strong); }
+.btn-secondary:hover:not(:disabled) { border-color: var(--navy); text-decoration: none; }
+
+.btn-danger { background: var(--surface); color: var(--status-rejected); border-color: var(--status-rejected); }
+.btn-danger:hover:not(:disabled) { background: var(--status-rejected-bg); text-decoration: none; }
+
+.btn-teal { background: var(--teal); color: white; }
+.btn-teal:hover:not(:disabled) { background: #0b8783; text-decoration: none; }
+
+.btn-sm { padding: 6px 12px; font-size: 0.82rem; }
+.btn-block { width: 100%; }
+
+/* ---------- Forms ---------- */
+.field { margin-bottom: 16px; }
+.field label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  margin-bottom: 6px;
+}
+.field input, .field select, .field textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--ink);
+}
+.field input:focus, .field select:focus, .field textarea:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(30, 143, 213, 0.15);
+}
+.field-row { display: flex; gap: 16px; }
+.field-row .field { flex: 1; }
+.field-hint { font-size: 0.78rem; color: var(--muted); margin-top: 4px; }
+.field-error { font-size: 0.78rem; color: var(--status-rejected); margin-top: 4px; }
+
+/* ---------- Cards ---------- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+}
+
+/* ---------- Status badge - used consistently across badges, dashboard, admin ---------- */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+.status-badge::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.status-REQUESTED { color: var(--status-requested); background: var(--status-requested-bg); }
+.status-APPROVED  { color: var(--status-approved); background: var(--status-approved-bg); }
+.status-PICKED_UP { color: var(--status-picked-up); background: var(--status-picked-up-bg); }
+.status-RETURNED  { color: var(--status-returned); background: var(--status-returned-bg); }
+.status-REJECTED  { color: var(--status-rejected); background: var(--status-rejected-bg); }
+.status-CANCELLED { color: var(--status-cancelled); background: var(--status-cancelled-bg); }
+.status-OVERDUE   { color: #fff; background: var(--status-rejected); }
+.status-OVERDUE::before { background: #fff; }
+
+/* ---------- Utility ---------- */
+.mono { font-family: var(--font-mono); }
+.muted { color: var(--muted); }
+.text-sm { font-size: 0.85rem; }
+.stack { display: flex; flex-direction: column; gap: 12px; }
+.row { display: flex; align-items: center; gap: 12px; }
+.row-between { display: flex; align-items: center; justify-content: space-between; }
+.divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+
+.empty-state {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--muted);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-md);
+}
+
+.alert {
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  margin-bottom: 16px;
+}
+.alert-error { background: var(--status-rejected-bg); color: var(--status-rejected); }
+.alert-success { background: var(--status-returned-bg); color: #0b756f; }
+
+.alert-info { background: var(--status-approved-bg); color: #14618f; }
+.alert-warn { background: var(--status-requested-bg); color: var(--status-requested); }
